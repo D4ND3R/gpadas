@@ -18,7 +18,7 @@ import {
 import subjects from "./data/subjects.json";
 import "./styles.css";
 
-type CoverStyle = "minimalista" | "detallado" | "moderno";
+type CoverStyle = "minimalista" | "limpio" | "detallado" | "moderno";
 type CoverOrientation = "vertical" | "horizontal";
 type WorkType = "ada" | "laboratorio" | "producto" | "otro";
 type Group = "" | "A" | "B" | "C";
@@ -60,7 +60,8 @@ const semesterNames: Record<string, string> = {
 };
 
 const styleOptions: Array<{ value: CoverStyle; label: string }> = [
-  { value: "minimalista", label: "Minimalista" },
+  { value: "minimalista", label: "Base" },
+  { value: "limpio", label: "Minimalista" },
   { value: "detallado", label: "Detallado" },
   { value: "moderno", label: "Moderno" },
 ];
@@ -351,8 +352,38 @@ function CoverPage({ form }: { form: FormState }) {
             <strong>{SCHOOL_NAME}</strong>
             <span>Incorporada a la {UNIVERSITY_NAME}</span>
           </div>
-          <img className="school-stamp modern-stamp" src="/assets/school-stamp.png" alt="" />
         </footer>
+        <img className="school-stamp modern-stamp" src="/assets/school-stamp.png" alt="" />
+      </article>
+    );
+  }
+
+  if (form.style === "limpio") {
+    return (
+      <article className={coverClass} data-testid="cover-page">
+        <img className="logo-strip clean-strip" src="/assets/logo-strip.png" alt="" />
+        <header className="clean-heading">
+          <p>{SCHOOL_NAME}</p>
+          <strong>Incorporada a la {UNIVERSITY_NAME}</strong>
+          <span>{currentDate}</span>
+        </header>
+        <section className="clean-title">
+          <span>{workTitle}</span>
+          <h1>{subjectName || "Materia"}</h1>
+          <p>{semesterLine}</p>
+        </section>
+        <dl className="clean-details">
+          <div>
+            <dt>Entrega</dt>
+            <dd>{deliveryDate}</dd>
+          </div>
+          <div>
+            <dt>Maestro</dt>
+            <dd>{teacherName || "Sin maestro asignado"}</dd>
+          </div>
+        </dl>
+        <ParticipantsList participants={form.participants} className="clean-student" />
+        <img className="school-stamp clean-stamp" src="/assets/school-stamp.png" alt="" />
       </article>
     );
   }

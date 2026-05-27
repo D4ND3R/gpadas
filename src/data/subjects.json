@@ -1,295 +1,398 @@
 {
   "subjects": {
-    "pensamiento-filosofico": {
-      "name": "Pensamiento filosófico",
-      "teacher": "Oscar Ivan Huh Carvajal"
+    "diseno-multimedia": {
+      "name": "Diseño Multimedia",
+      "teacher": "Maria Jesús Pacheco Sierra"
     },
-    "pensamiento-deductivo": {
-      "name": "Pensamiento deductivo",
-      "teacher": "José René Puc Varguez"
+    "creatividad-en-movimiento-ab": {
+      "name": "Creatividad en Movimiento",
+      "teacher": "Fernely Rodriguez Alcocer"
     },
-    "mexico-independiente": {
-      "name": "México independiente",
-      "teacher": "Fatima Del Carmen Madrigal JImenez"
+    "creatividad-en-movimiento-c": {
+      "name": "Creatividad en Movimiento",
+      "teacher": "Jesús Santiago Espadas Durán"
     },
-    "fundamentos-biologia": {
-      "name": "Fundamentos de biología",
+    "diagnostico-de-proyectos-comunitarios-c": {
+      "name": "Diagnóstico de Proyectos Comunitarios",
       "teacher": "Marlene Soledad Nolasco Uicab"
     },
-    "principios-quimica": {
-      "name": "Principios de química",
-      "teacher": "Carlos Daniel Hernandez Velazquez"
+    "diagnostico-de-proyectos-comunitarios-ab": {
+      "name": "Diagnóstico de Proyectos Comunitarios",
+      "teacher": "Fatima del Carmen Madrigal Jimenez"
     },
-    "lenguas": {
-      "name": "Lenguas",
+    "fundamentos-de-biologia-c": {
+      "name": "Fundamentos de Biología",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "fundamentos-de-biologia-b": {
+      "name": "Fundamentos de Biología",
       "teacher": "Judith Madai Coutiño Moral"
     },
-    "habilidades-socioemocionales": {
-      "name": "Habilidades socioemocionales",
-      "teacher": "Fernely Aguilar Rodriguez"
+    "fundamentos-de-biologia-a": {
+      "name": "Fundamentos de Biología",
+      "teacher": "Victor Leonardo Aguilar Trejo"
     },
-    "redaccion-textos": {
-      "name": "Redacción de textos",
-      "teacher": "Ahmed Cazares Nuñez"
+    "reacciones-quimicas": {
+      "name": "Reacciones Químicas",
+      "teacher": "Carlos Daniel Hernández Velázquez"
     },
-    "diagnostico-proyectos-comunitarios": {
-      "name": "Diagnóstico de proyectos comunitarios",
-      "teacher": "María Jesús Pacheco Sierra"
+    "mexico-independiente-c": {
+      "name": "México Independiente",
+      "teacher": "Joaquin Martos Crespo"
     },
-    "creatividad-movimiento": {
-      "name": "Creatividad en movimiento",
-      "teacher": "Fatima Del Carmen Madrigal JImenez"
+    "redaccion-de-textos-y-expresion-c": {
+      "name": "Redacción de Textos y Expresión",
+      "teacher": "Juan Pablo Tejero Jiménez"
     },
-    "diseno-multimedia": {
-      "name": "Diseño multimedia",
+    "redaccion-de-textos-y-expresion-ab": {
+      "name": "Redacción de Textos y Expresión",
+      "teacher": "Fatima del Carmen Madrigal Jimenez"
+    },
+    "lenguas-ii": {
+      "name": "Lenguas II",
+      "teacher": "Ahmed Daniel Cazares"
+    },
+    "mexico-independiente-ab": {
+      "name": "México Independiente",
       "teacher": "Oscar Ivan Huh Carvajal"
+    },
+    "habilidades-socioemocionales": {
+      "name": "Habilidades Socioemocionales",
+      "teacher": "Marlene Soledad Nolasco Uicab"
+    },
+    "pensamiento-filosofico-c": {
+      "name": "Pensamiento Filosófico",
+      "teacher": "Francisco Javier Yerves Lopez"
+    },
+    "pensamiento-filosofico-ab": {
+      "name": "Pensamiento Filosófico",
+      "teacher": "Oscar Ivan Huh Carvajal"
+    },
+    "pensamiento-deductivo-bc": {
+      "name": "Pensamiento Deductivo",
+      "teacher": "José René Puc Varguez"
+    },
+    "pensamiento-deductivo-a": {
+      "name": "Pensamiento Deductivo",
+      "teacher": "Fatima Aylin Diaz Chan"
+    },
+    "sistemas-del-cuerpo-humano-i-b": {
+      "name": "Sistemas del Cuerpo Humano I",
+      "teacher": "Victor Leonardo Aguilar Trejo"
+    },
+    "sistemas-del-cuerpo-humano-i-a": {
+      "name": "Sistemas del Cuerpo Humano I",
+      "teacher": "Judith Madai Coutiño Moral"
+    },
+    "derechos-humanos-y-desarrollo-social": {
+      "name": "Derechos Humanos y Desarrollo Social",
+      "teacher": "Litzy Anette Rodriguez Perez"
+    },
+    "algebra-avanzada": {
+      "name": "Álgebra Avanzada",
+      "teacher": "Jesús René Puc Castillo"
+    },
+    "nutricion-y-actividad-fisica-a": {
+      "name": "Nutrición y Actividad Física",
+      "teacher": "Victor Leonardo Aguilar Trejo"
+    },
+    "nutricion-y-actividad-fisica-b": {
+      "name": "Nutrición y Actividad Física",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "creacion-de-base-de-datos": {
+      "name": "Creación de base de datos",
+      "teacher": "Maria Jesús Pacheco Sierra"
+    },
+    "mercadotecnia": {
+      "name": "Mercadotecnia",
+      "teacher": "Francisco Javier Yerves Lopez"
+    },
+    "nutricion-y-percepcion-estetica": {
+      "name": "Nutrición y percepción estética",
+      "teacher": "Jesús Santiago Espadas Durán"
+    },
+    "diseno-de-proyectos-comunitarios": {
+      "name": "Diseño de proyectos comunitarios",
+      "teacher": "Marlene Soledad Nolasco Uicab"
+    },
+    "proyecto-de-carrera-bc": {
+      "name": "Proyecto de carrera",
+      "teacher": "Marlene Soledad Nolasco Uicab"
+    },
+    "proyecto-de-carrera-a": {
+      "name": "Proyecto de carrera",
+      "teacher": "Oscar Ivan Huh Carvajal"
+    },
+    "dinamica-de-la-naturaleza": {
+      "name": "Dinámica de la naturaleza",
+      "teacher": "Judith Madai Coutiño Moral"
+    },
+    "acontecimientos-del-mexico-contemporaneo": {
+      "name": "Acontecimientos del México contemporáneo",
+      "teacher": "Joaquin Martos Crespo"
+    },
+    "modelacion-matematica-i-c": {
+      "name": "Modelación matemática I",
+      "teacher": "Florencio Canche Och"
+    },
+    "modelacion-matematica-i-ab": {
+      "name": "Modelación matemática I",
+      "teacher": "Jesús René Puc Castillo"
+    },
+    "etica-aplicada-a": {
+      "name": "Ética aplicada",
+      "teacher": "Oscar Ivan Huh Carvajal"
+    },
+    "etica-aplicada-bc": {
+      "name": "Ética aplicada",
+      "teacher": "Juan Pablo Tejero Jiménez"
+    },
+    "lenguas-iv": {
+      "name": "Lenguas IV",
+      "teacher": "Ahmed Daniel Cazares"
+    },
+    "quimica-aplicada-b": {
+      "name": "Química Aplicada",
+      "teacher": "Carlos Daniel Hernández Velázquez"
+    },
+    "quimica-aplicada-a": {
+      "name": "Química Aplicada",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "introduccion-a-la-bioquimica-b": {
+      "name": "Introducción a la Bioquímica",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "introduccion-a-la-bioquimica-a": {
+      "name": "Introducción a la Bioquímica",
+      "teacher": "Victor Leonardo Aguilar Trejo"
+    },
+    "historia-cultura-y-desarrollo-contemporaneo-del-mundo": {
+      "name": "Historia cultura y desarrollo contemporáneo del mundo",
+      "teacher": "Joaquin Martos Crespo"
+    },
+    "temas-de-derecho": {
+      "name": "Temas de derecho",
+      "teacher": "Litzy Anette Rodriguez Perez"
+    },
+    "topicos-de-algebra-aplicada": {
+      "name": "Tópicos de álgebra aplicada",
+      "teacher": "Jesús René Puc Castillo"
+    },
+    "calculo-integral": {
+      "name": "Cálculo Integral",
+      "teacher": "Florencio Canche Och"
+    },
+    "primeros-auxilios-b": {
+      "name": "Primeros Auxilios",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "primeros-auxilios-a": {
+      "name": "Primeros Auxilios",
+      "teacher": "Victor Leonardo Aguilar Trejo"
+    },
+    "redes-y-comunicaciones": {
+      "name": "Redes y Comunicaciones",
+      "teacher": "Maria Jesús Pacheco Sierra"
+    },
+    "contabilidad-empresarial": {
+      "name": "Contabilidad Empresarial",
+      "teacher": "Francisco Javier Yerves Lopez"
+    },
+    "arte-deporte-e-identidad-cultural": {
+      "name": "Arte deporte e identidad cultural",
+      "teacher": "Jesús Santiago Espadas Durán"
+    },
+    "proyecto-de-vida": {
+      "name": "Proyecto de vida",
+      "teacher": "Marlene Soledad Nolasco Uicab"
+    },
+    "la-investigacion-en-las-ciencias-naturales-c": {
+      "name": "La investigación en las ciencias naturales",
+      "teacher": "Victor Leonardo Aguilar Trejo"
+    },
+    "la-investigacion-en-las-ciencias-naturales-ab": {
+      "name": "La investigación en las ciencias naturales",
+      "teacher": "Maricruz Dzib Polanco"
+    },
+    "administracion-contemporanea-y-liderazgo-emprendedor": {
+      "name": "Administración contemporánea y liderazgo emprendedor",
+      "teacher": "Francisco Javier Yerves Lopez"
+    },
+    "las-matematicas-en-la-toma-de-decisiones-c": {
+      "name": "Las matemáticas en la toma de decisiones",
+      "teacher": "Jesús René Puc Castillo"
+    },
+    "las-matematicas-en-la-toma-de-decisiones-ab": {
+      "name": "Las matemáticas en la toma de decisiones",
+      "teacher": "Florencio Canche Och"
+    },
+    "literatura-como-expresion-artistica": {
+      "name": "Literatura como expresión artística",
+      "teacher": "Juan Pablo Tejero Jiménez"
+    },
+    "lenguas-vi": {
+      "name": "Lenguas VI",
+      "teacher": "Ahmed Daniel Cazares"
     }
   },
   "semesters": {
     "1": {
-      "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ]
+      "A": [],
+      "B": [],
+      "C": []
     },
     "2": {
       "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
+        "diseno-multimedia",
+        "creatividad-en-movimiento-ab",
+        "diagnostico-de-proyectos-comunitarios-ab",
+        "fundamentos-de-biologia-a",
+        "reacciones-quimicas",
+        "redaccion-de-textos-y-expresion-ab",
+        "lenguas-ii",
+        "mexico-independiente-ab",
         "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "pensamiento-filosofico-ab",
+        "pensamiento-deductivo-a",
+        "sistemas-del-cuerpo-humano-i-a"
       ],
       "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
+        "diseno-multimedia",
+        "creatividad-en-movimiento-ab",
+        "diagnostico-de-proyectos-comunitarios-ab",
+        "fundamentos-de-biologia-b",
+        "reacciones-quimicas",
+        "redaccion-de-textos-y-expresion-ab",
+        "lenguas-ii",
+        "mexico-independiente-ab",
         "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "pensamiento-filosofico-ab",
+        "pensamiento-deductivo-bc",
+        "sistemas-del-cuerpo-humano-i-b"
       ],
       "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
+        "diseno-multimedia",
+        "creatividad-en-movimiento-c",
+        "diagnostico-de-proyectos-comunitarios-c",
+        "fundamentos-de-biologia-c",
+        "reacciones-quimicas",
+        "mexico-independiente-c",
+        "redaccion-de-textos-y-expresion-c",
+        "lenguas-ii",
         "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "pensamiento-filosofico-c",
+        "pensamiento-deductivo-bc"
       ]
     },
     "3": {
-      "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ]
+      "A": [],
+      "B": [],
+      "C": []
     },
     "4": {
       "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "derechos-humanos-y-desarrollo-social",
+        "algebra-avanzada",
+        "nutricion-y-actividad-fisica-a",
+        "creacion-de-base-de-datos",
+        "mercadotecnia",
+        "nutricion-y-percepcion-estetica",
+        "diseno-de-proyectos-comunitarios",
+        "proyecto-de-carrera-a",
+        "dinamica-de-la-naturaleza",
+        "acontecimientos-del-mexico-contemporaneo",
+        "modelacion-matematica-i-ab",
+        "etica-aplicada-a",
+        "lenguas-iv",
+        "quimica-aplicada-a",
+        "introduccion-a-la-bioquimica-a",
+        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
       ],
       "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "derechos-humanos-y-desarrollo-social",
+        "algebra-avanzada",
+        "nutricion-y-actividad-fisica-b",
+        "creacion-de-base-de-datos",
+        "mercadotecnia",
+        "nutricion-y-percepcion-estetica",
+        "diseno-de-proyectos-comunitarios",
+        "proyecto-de-carrera-bc",
+        "dinamica-de-la-naturaleza",
+        "acontecimientos-del-mexico-contemporaneo",
+        "modelacion-matematica-i-ab",
+        "etica-aplicada-bc",
+        "lenguas-iv",
+        "quimica-aplicada-b",
+        "introduccion-a-la-bioquimica-b",
+        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
       ],
       "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "derechos-humanos-y-desarrollo-social",
+        "algebra-avanzada",
+        "creacion-de-base-de-datos",
+        "mercadotecnia",
+        "nutricion-y-percepcion-estetica",
+        "diseno-de-proyectos-comunitarios",
+        "proyecto-de-carrera-bc",
+        "dinamica-de-la-naturaleza",
+        "acontecimientos-del-mexico-contemporaneo",
+        "modelacion-matematica-i-c",
+        "etica-aplicada-bc",
+        "lenguas-iv",
+        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
       ]
     },
     "5": {
-      "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ],
-      "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
-      ]
+      "A": [],
+      "B": [],
+      "C": []
     },
     "6": {
       "A": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "temas-de-derecho",
+        "topicos-de-algebra-aplicada",
+        "calculo-integral",
+        "primeros-auxilios-a",
+        "redes-y-comunicaciones",
+        "contabilidad-empresarial",
+        "arte-deporte-e-identidad-cultural",
+        "proyecto-de-vida",
+        "la-investigacion-en-las-ciencias-naturales-ab",
+        "administracion-contemporanea-y-liderazgo-emprendedor",
+        "las-matematicas-en-la-toma-de-decisiones-ab",
+        "literatura-como-expresion-artistica",
+        "lenguas-vi"
       ],
       "B": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "temas-de-derecho",
+        "topicos-de-algebra-aplicada",
+        "calculo-integral",
+        "primeros-auxilios-b",
+        "redes-y-comunicaciones",
+        "contabilidad-empresarial",
+        "arte-deporte-e-identidad-cultural",
+        "proyecto-de-vida",
+        "la-investigacion-en-las-ciencias-naturales-ab",
+        "administracion-contemporanea-y-liderazgo-emprendedor",
+        "las-matematicas-en-la-toma-de-decisiones-ab",
+        "literatura-como-expresion-artistica",
+        "lenguas-vi"
       ],
       "C": [
-        "pensamiento-filosofico",
-        "pensamiento-deductivo",
-        "mexico-independiente",
-        "fundamentos-biologia",
-        "principios-quimica",
-        "lenguas",
-        "habilidades-socioemocionales",
-        "redaccion-textos",
-        "diagnostico-proyectos-comunitarios",
-        "creatividad-movimiento",
-        "diseno-multimedia"
+        "temas-de-derecho",
+        "topicos-de-algebra-aplicada",
+        "calculo-integral",
+        "redes-y-comunicaciones",
+        "contabilidad-empresarial",
+        "arte-deporte-e-identidad-cultural",
+        "proyecto-de-vida",
+        "la-investigacion-en-las-ciencias-naturales-c",
+        "administracion-contemporanea-y-liderazgo-emprendedor",
+        "las-matematicas-en-la-toma-de-decisiones-c",
+        "literatura-como-expresion-artistica",
+        "lenguas-vi"
       ]
     }
   }

@@ -24,7 +24,8 @@ GitHub repository:
 ## Current Behavior
 
 - App is in Spanish.
-- Cover styles: `Minimalista`, `Detallado`, `Moderno`.
+- Cover styles: `Base`, `Minimalista`, `Detallado`, `Moderno`.
+- Internal style value `minimalista` is kept for the `Base` design so old cookies continue to load the original layout. The newer minimalist design uses internal value `limpio`.
 - Orientations: `Vertical` and `Horizontal`.
 - Work types: `ADA`, `Práctica de laboratorio`, `Producto final`, `Otro`.
 - `Otro` shows a free-text work-name input.
@@ -116,3 +117,4 @@ vercel --prod --yes
 - Browser verification has been done with the Codex Browser plugin against local preview and the public Vercel URL.
 - `jspdf` and `html2canvas` are responsible for client-side PDF export.
 - Mobile preview scales the document visually; PDF export temporarily renders at full page size by setting `isExporting`.
+- The favicon is `public/favicon.svg`, a round SVG icon linked from `index.html`.
