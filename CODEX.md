@@ -2,15 +2,15 @@
 
 ## Project
 
-This is a Vite + React + TypeScript web app for generating Spanish front pages for ADAS, lab practices, final products, and custom work types for Preparatoria Siglo XXI / Universidad Autónoma de Yucatán.
+This is GPADAS, a Vite + React + TypeScript web app for generating Spanish front pages for ADAS, lab practices, final products, and custom work types for Preparatoria Siglo XXI / Universidad Autónoma de Yucatán.
 
 Production URL:
 
-- https://generador-portadas-adas.vercel.app
+- https://gpadas.vercel.app
 
 GitHub repository:
 
-- https://github.com/D4ND3R/generador-portadas-adas
+- https://github.com/D4ND3R/gpadas
 
 ## Main Files
 
@@ -24,6 +24,7 @@ GitHub repository:
 ## Current Behavior
 
 - App is in Spanish.
+- Public/app name: `GPADAS`.
 - Cover styles: `Base`, `Minimalista`, `Detallado`, `Moderno`.
 - Internal style value `minimalista` is kept for the `Base` design so old cookies continue to load the original layout. The newer minimalist design uses internal value `limpio`.
 - Orientations: `Vertical` and `Horizontal`.
@@ -96,7 +97,7 @@ This checks TypeScript without writing JS from `tsc`, then Vite bundles producti
 
 ## Deploy
 
-Vercel is linked to project `generador-portadas-adas`. Production deploys run the configured build command and publish `dist/`.
+Vercel is linked to project `gpadas`. Production deploys run the configured build command and publish `dist/`.
 
 Typical deploy:
 
@@ -107,7 +108,7 @@ vercel --prod --yes
 If deploying from a temporary worktree, link it first:
 
 ```bash
-vercel link --yes --project generador-portadas-adas
+vercel link --yes --project gpadas
 vercel --prod --yes
 ```
 
@@ -118,3 +119,4 @@ vercel --prod --yes
 - `jspdf` and `html2canvas` are responsible for client-side PDF export.
 - Mobile preview scales the document visually; PDF export temporarily renders at full page size by setting `isExporting`.
 - The favicon is `public/favicon.svg`, a round SVG icon linked from `index.html`.
+- License is proprietary / all rights reserved. See `LICENSE`.

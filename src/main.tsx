@@ -279,6 +279,7 @@ function CoverPage({ form }: { form: FormState }) {
         </section>
         <section className="title-block framed">
           <span>{workTitle}</span>
+          <p>{semesterLine}</p>
           <h1>{subjectName || "Materia"}</h1>
         </section>
         <dl className="info-grid">
@@ -319,8 +320,8 @@ function CoverPage({ form }: { form: FormState }) {
         <img className="logo-strip modern-strip" src="/assets/logo-strip.png" alt="" />
         <section className="modern-hero">
           <span>{workTitle}</span>
-          <h1>{subjectName || "Materia"}</h1>
           <p>{semesterLine}</p>
+          <h1>{subjectName || "Materia"}</h1>
         </section>
         <section className="modern-meta">
           <div>
@@ -369,8 +370,8 @@ function CoverPage({ form }: { form: FormState }) {
         </header>
         <section className="clean-title">
           <span>{workTitle}</span>
-          <h1>{subjectName || "Materia"}</h1>
           <p>{semesterLine}</p>
+          <h1>{subjectName || "Materia"}</h1>
         </section>
         <dl className="clean-details">
           <div>
@@ -398,8 +399,8 @@ function CoverPage({ form }: { form: FormState }) {
       </section>
       <section className="classic-title">
         <h1>{workTitle}</h1>
-        <h2>{subjectName || "Materia"}</h2>
         <p>{semesterLine}</p>
+        <h2>{subjectName || "Materia"}</h2>
       </section>
       <p className="delivery">Fecha de entrega: {deliveryDate}</p>
       <p className="teacher">Maestro: {teacherName}</p>
@@ -542,7 +543,7 @@ function App() {
         <div className="panel-heading">
           <div>
             <span className="eyebrow">Preparatoria Siglo XXI</span>
-            <h1>Generador de portadas</h1>
+            <h1>GPADAS</h1>
           </div>
           <School aria-hidden="true" />
         </div>
@@ -632,17 +633,6 @@ function App() {
             </Field>
           )}
 
-          <Field icon={<GraduationCap aria-hidden="true" />} label="Materia">
-            <select value={form.subject} onChange={(event) => updateForm("subject", event.target.value)}>
-              <option value="">Ninguna</option>
-              {subjectOptions.map((subjectId) => (
-                <option key={subjectId} value={subjectId}>
-                  {subjectsData.subjects[subjectId]?.name ?? subjectId}
-                </option>
-              ))}
-            </select>
-          </Field>
-
           <div className="two-columns">
             <Field icon={<GraduationCap aria-hidden="true" />} label="Semestre">
               <select value={form.semester} onChange={(event) => updateForm("semester", event.target.value)}>
@@ -665,6 +655,17 @@ function App() {
               </select>
             </Field>
           </div>
+
+          <Field icon={<GraduationCap aria-hidden="true" />} label="Materia">
+            <select value={form.subject} onChange={(event) => updateForm("subject", event.target.value)}>
+              <option value="">Ninguna</option>
+              {subjectOptions.map((subjectId) => (
+                <option key={subjectId} value={subjectId}>
+                  {subjectsData.subjects[subjectId]?.name ?? subjectId}
+                </option>
+              ))}
+            </select>
+          </Field>
 
           <Field icon={<CalendarDays aria-hidden="true" />} label="Fecha de entrega">
             <div className="clearable-row">
