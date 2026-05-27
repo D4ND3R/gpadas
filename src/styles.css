@@ -237,6 +237,11 @@ button:disabled {
   width: 794px;
 }
 
+.cover-page > :not(.school-stamp) {
+  position: relative;
+  z-index: 1;
+}
+
 .cover-horizontal {
   height: 794px;
   width: 1123px;
@@ -341,8 +346,11 @@ button:disabled {
 
 .school-stamp {
   display: block;
+  opacity: 0.24;
   object-fit: contain;
+  pointer-events: none;
   position: absolute;
+  z-index: 0;
 }
 
 .classic-stamp {
