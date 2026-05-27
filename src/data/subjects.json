@@ -255,8 +255,7 @@
         "mexico-independiente-ab",
         "habilidades-socioemocionales",
         "pensamiento-filosofico-ab",
-        "pensamiento-deductivo-a",
-        "sistemas-del-cuerpo-humano-i-a"
+        "pensamiento-deductivo-a"
       ],
       "B": [
         "diseno-multimedia",
@@ -269,8 +268,7 @@
         "mexico-independiente-ab",
         "habilidades-socioemocionales",
         "pensamiento-filosofico-ab",
-        "pensamiento-deductivo-bc",
-        "sistemas-del-cuerpo-humano-i-b"
+        "pensamiento-deductivo-bc"
       ],
       "C": [
         "diseno-multimedia",
@@ -292,57 +290,9 @@
       "C": []
     },
     "4": {
-      "A": [
-        "derechos-humanos-y-desarrollo-social",
-        "algebra-avanzada",
-        "nutricion-y-actividad-fisica-a",
-        "creacion-de-base-de-datos",
-        "mercadotecnia",
-        "nutricion-y-percepcion-estetica",
-        "diseno-de-proyectos-comunitarios",
-        "proyecto-de-carrera-a",
-        "dinamica-de-la-naturaleza",
-        "acontecimientos-del-mexico-contemporaneo",
-        "modelacion-matematica-i-ab",
-        "etica-aplicada-a",
-        "lenguas-iv",
-        "quimica-aplicada-a",
-        "introduccion-a-la-bioquimica-a",
-        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
-      ],
-      "B": [
-        "derechos-humanos-y-desarrollo-social",
-        "algebra-avanzada",
-        "nutricion-y-actividad-fisica-b",
-        "creacion-de-base-de-datos",
-        "mercadotecnia",
-        "nutricion-y-percepcion-estetica",
-        "diseno-de-proyectos-comunitarios",
-        "proyecto-de-carrera-bc",
-        "dinamica-de-la-naturaleza",
-        "acontecimientos-del-mexico-contemporaneo",
-        "modelacion-matematica-i-ab",
-        "etica-aplicada-bc",
-        "lenguas-iv",
-        "quimica-aplicada-b",
-        "introduccion-a-la-bioquimica-b",
-        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
-      ],
-      "C": [
-        "derechos-humanos-y-desarrollo-social",
-        "algebra-avanzada",
-        "creacion-de-base-de-datos",
-        "mercadotecnia",
-        "nutricion-y-percepcion-estetica",
-        "diseno-de-proyectos-comunitarios",
-        "proyecto-de-carrera-bc",
-        "dinamica-de-la-naturaleza",
-        "acontecimientos-del-mexico-contemporaneo",
-        "modelacion-matematica-i-c",
-        "etica-aplicada-bc",
-        "lenguas-iv",
-        "historia-cultura-y-desarrollo-contemporaneo-del-mundo"
-      ]
+      "A": [],
+      "B": [],
+      "C": []
     },
     "5": {
       "A": [],
@@ -350,50 +300,9 @@
       "C": []
     },
     "6": {
-      "A": [
-        "temas-de-derecho",
-        "topicos-de-algebra-aplicada",
-        "calculo-integral",
-        "primeros-auxilios-a",
-        "redes-y-comunicaciones",
-        "contabilidad-empresarial",
-        "arte-deporte-e-identidad-cultural",
-        "proyecto-de-vida",
-        "la-investigacion-en-las-ciencias-naturales-ab",
-        "administracion-contemporanea-y-liderazgo-emprendedor",
-        "las-matematicas-en-la-toma-de-decisiones-ab",
-        "literatura-como-expresion-artistica",
-        "lenguas-vi"
-      ],
-      "B": [
-        "temas-de-derecho",
-        "topicos-de-algebra-aplicada",
-        "calculo-integral",
-        "primeros-auxilios-b",
-        "redes-y-comunicaciones",
-        "contabilidad-empresarial",
-        "arte-deporte-e-identidad-cultural",
-        "proyecto-de-vida",
-        "la-investigacion-en-las-ciencias-naturales-ab",
-        "administracion-contemporanea-y-liderazgo-emprendedor",
-        "las-matematicas-en-la-toma-de-decisiones-ab",
-        "literatura-como-expresion-artistica",
-        "lenguas-vi"
-      ],
-      "C": [
-        "temas-de-derecho",
-        "topicos-de-algebra-aplicada",
-        "calculo-integral",
-        "redes-y-comunicaciones",
-        "contabilidad-empresarial",
-        "arte-deporte-e-identidad-cultural",
-        "proyecto-de-vida",
-        "la-investigacion-en-las-ciencias-naturales-c",
-        "administracion-contemporanea-y-liderazgo-emprendedor",
-        "las-matematicas-en-la-toma-de-decisiones-c",
-        "literatura-como-expresion-artistica",
-        "lenguas-vi"
-      ]
+      "A": [],
+      "B": [],
+      "C": []
     }
   }
 }
