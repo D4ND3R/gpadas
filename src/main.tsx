@@ -7,6 +7,7 @@ import {
   Download,
   FileText,
   GraduationCap,
+  MinusCircle,
   Plus,
   Printer,
   RotateCcw,
@@ -15,27 +16,33 @@ import {
   UserRound,
 } from "lucide-react";
 import subjects from "./data/subjects.json";
-import teachers from "./data/teachers.json";
 import "./styles.css";
 
 type CoverStyle = "minimalista" | "detallado" | "moderno";
 type CoverOrientation = "vertical" | "horizontal";
-type WorkType = "ada" | "laboratorio" | "producto";
-type Group = "A" | "B" | "C";
-type SubjectsBySemester = Record<string, Record<Group, string[]>>;
+type WorkType = "ada" | "laboratorio" | "producto" | "otro";
+type Group = "" | "A" | "B" | "C";
+interface SubjectRecord {
+  name: string;
+  teacher: string;
+}
+interface SubjectsData {
+  subjects: Record<string, SubjectRecord>;
+  semesters: Record<string, Record<Exclude<Group, "">, string[]>>;
+}
 
 interface FormState {
   style: CoverStyle;
   orientation: CoverOrientation;
   currentDate: string;
   workType: WorkType;
+  customWorkType: string;
   workNumber: string;
   subject: string;
   semester: string;
   group: Group;
   deliveryDate: string;
   participants: string[];
-  teacher: string;
 }
 
 const SCHOOL_NAME = "Preparatoria Siglo XXI";
@@ -62,6 +69,7 @@ const workOptions: Array<{ value: WorkType; label: string }> = [
   { value: "ada", label: "ADA" },
   { value: "laboratorio", label: "Práctica de laboratorio" },
   { value: "producto", label: "Producto final" },
+  { value: "otro", label: "Otro" },
 ];
 
 const orientationOptions: Array<{ value: CoverOrientation; label: string }> = [
@@ -69,9 +77,23 @@ const orientationOptions: Array<{ value: CoverOrientation; label: string }> = [
   { value: "horizontal", label: "Horizontal" },
 ];
 
-const subjectsBySemester = subjects as SubjectsBySemester;
-const getSubjectsFor = (semester: string, group: Group) =>
-  subjectsBySemester[semester]?.[group] ?? [];
+const subjectsData = subjects as SubjectsData;
+const getSubjectIdsFor = (semester: string, group: Group) => {
+  if (!semester || !group) return [];
+  return subjectsData.semesters[semester]?.[group] ?? [];
+};
+const getSubjectById = (subjectId: string) =>
+  subjectId ? subjectsData.subjects[subjectId] : undefined;
+const findSubjectId = (value: string) => {
+  if (!value) return "";
+  if (subjectsData.subjects[value]) return value;
+
+  return (
+    Object.entries(subjectsData.subjects).find(
+      ([, subject]) => subject.name === value,
+    )?.[0] ?? ""
+  );
+};
 
 const todayIso = () => {
   const date = new Date();
@@ -104,6 +126,11 @@ const clearAppCookies = () => {
     "student",
     "participants",
     "teacher",
+    "currentDate",
+    "deliveryDate",
+    "workType",
+    "customWorkType",
+    "workNumber",
   ].forEach((key) => {
     document.cookie = `${COOKIE_PREFIX}${key}=; max-age=0; path=/; SameSite=Lax`;
   });
@@ -134,15 +161,15 @@ const cookieArrayValue = (key: string, fallback: string[]) => {
 const buildInitialState = (): FormState => ({
   style: cookieValue("style", "minimalista") as CoverStyle,
   orientation: cookieValue("orientation", "vertical") as CoverOrientation,
-  currentDate: todayIso(),
-  workType: "ada",
-  workNumber: "1",
-  subject: cookieValue("subject", getSubjectsFor("2", "B")[0] ?? ""),
-  semester: cookieValue("semester", "2"),
-  group: cookieValue("group", "B") as Group,
-  deliveryDate: todayIso(),
+  currentDate: cookieValue("currentDate", ""),
+  workType: cookieValue("workType", "ada") as WorkType,
+  customWorkType: cookieValue("customWorkType", ""),
+  workNumber: cookieValue("workNumber", ""),
+  subject: findSubjectId(cookieValue("subject", "")),
+  semester: cookieValue("semester", ""),
+  group: cookieValue("group", "") as Group,
+  deliveryDate: cookieValue("deliveryDate", ""),
   participants: cookieArrayValue("participants", [""]),
-  teacher: cookieValue("teacher", teachers[0]),
 });
 
 const formatLongDate = (value: string) => {
@@ -163,12 +190,15 @@ const formatShortDate = (value: string) => {
 };
 
 const buildWorkTitle = (form: FormState) => {
-  if (form.workType === "producto") return "PRODUCTO FINAL";
-  const number = form.workNumber.trim() || "1";
-  if (form.workType === "laboratorio") {
-    return `PRÁCTICA DE LABORATORIO #${number}`;
+  if (form.workType === "otro") {
+    return form.customWorkType.trim().toUpperCase() || "OTRO";
   }
-  return `ACTIVIDAD DE APRENDIZAJE #${number}`;
+  if (form.workType === "producto") return "PRODUCTO FINAL";
+  const number = form.workNumber.trim();
+  if (form.workType === "laboratorio") {
+    return number ? `PRÁCTICA DE LABORATORIO #${number}` : "PRÁCTICA DE LABORATORIO";
+  }
+  return number ? `ACTIVIDAD DE APRENDIZAJE #${number}` : "ACTIVIDAD DE APRENDIZAJE";
 };
 
 const fileSafe = (value: string) =>
@@ -224,8 +254,16 @@ function ParticipantsList({
 function CoverPage({ form }: { form: FormState }) {
   const coverClass = `cover-page cover-${form.style} cover-${form.orientation}`;
   const workTitle = buildWorkTitle(form);
-  const semesterLine = `${semesterNames[form.semester]} GRUPO ${form.group}`;
-  const currentDate = `${LOCATION}, ${formatLongDate(form.currentDate)}`;
+  const subject = getSubjectById(form.subject);
+  const subjectName = subject?.name ?? "";
+  const teacherName = subject?.teacher ?? "";
+  const semesterLine =
+    form.semester && form.group
+      ? `${semesterNames[form.semester]} GRUPO ${form.group}`
+      : "";
+  const currentDate = form.currentDate
+    ? `${LOCATION}, ${formatLongDate(form.currentDate)}`
+    : LOCATION;
   const deliveryDate = formatShortDate(form.deliveryDate);
   const participantCount = form.participants.filter((name) => name.trim()).length;
   const participantLabel = participantCount > 1 ? "Alumnos" : "Alumno";
@@ -240,7 +278,7 @@ function CoverPage({ form }: { form: FormState }) {
         </section>
         <section className="title-block framed">
           <span>{workTitle}</span>
-          <h1>{form.subject}</h1>
+          <h1>{subjectName || "Materia"}</h1>
         </section>
         <dl className="info-grid">
           <div>
@@ -265,7 +303,7 @@ function CoverPage({ form }: { form: FormState }) {
           </div>
           <div>
             <dt>Maestro</dt>
-            <dd>{form.teacher}</dd>
+            <dd>{teacherName}</dd>
           </div>
         </dl>
         <ParticipantsList participants={form.participants} className="detailed-student" />
@@ -280,7 +318,7 @@ function CoverPage({ form }: { form: FormState }) {
         <img className="logo-strip modern-strip" src="/assets/logo-strip.png" alt="" />
         <section className="modern-hero">
           <span>{workTitle}</span>
-          <h1>{form.subject}</h1>
+          <h1>{subjectName || "Materia"}</h1>
           <p>{semesterLine}</p>
         </section>
         <section className="modern-meta">
@@ -294,7 +332,7 @@ function CoverPage({ form }: { form: FormState }) {
           </div>
           <div>
             <span>Maestro</span>
-            <strong>{form.teacher}</strong>
+            <strong>{teacherName || "Sin maestro asignado"}</strong>
           </div>
           <div>
             <span>{participantLabel}</span>
@@ -329,11 +367,11 @@ function CoverPage({ form }: { form: FormState }) {
       </section>
       <section className="classic-title">
         <h1>{workTitle}</h1>
-        <h2>{form.subject}</h2>
+        <h2>{subjectName || "Materia"}</h2>
         <p>{semesterLine}</p>
       </section>
       <p className="delivery">Fecha de entrega: {deliveryDate}</p>
-      <p className="teacher">Maestro: {form.teacher}</p>
+      <p className="teacher">Maestro: {teacherName}</p>
       <ParticipantsList participants={form.participants} />
       <img className="school-stamp classic-stamp" src="/assets/school-stamp.png" alt="" />
     </article>
@@ -343,15 +381,22 @@ function CoverPage({ form }: { form: FormState }) {
 function App() {
   const [form, setForm] = useState<FormState>(() => buildInitialState());
   const [isExporting, setIsExporting] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(() => window.innerWidth);
   const coverRef = useRef<HTMLDivElement>(null);
   const subjectOptions = useMemo(
-    () => getSubjectsFor(form.semester, form.group),
+    () => getSubjectIdsFor(form.semester, form.group),
     [form.group, form.semester],
   );
+  const selectedSubject = getSubjectById(form.subject);
   const pageSize =
     form.orientation === "horizontal"
       ? { width: 1123, height: 794, pdfOrientation: "landscape" as const }
       : { width: 794, height: 1123, pdfOrientation: "portrait" as const };
+  const availablePreviewWidth =
+    viewportWidth > 1120 ? viewportWidth - 420 - 72 : viewportWidth - 36;
+  const previewScale = isExporting
+    ? 1
+    : Math.min(1, Math.max(0.28, availablePreviewWidth / pageSize.width));
 
   const recurringValues = useMemo(
     () => ({
@@ -361,18 +406,32 @@ function App() {
       semester: form.semester,
       group: form.group,
       participants: JSON.stringify(form.participants),
-      teacher: form.teacher,
+      currentDate: form.currentDate,
+      deliveryDate: form.deliveryDate,
+      workType: form.workType,
+      customWorkType: form.customWorkType,
+      workNumber: form.workNumber,
     }),
     [
+      form.currentDate,
+      form.customWorkType,
+      form.deliveryDate,
       form.group,
       form.orientation,
       form.participants,
       form.semester,
       form.style,
       form.subject,
-      form.teacher,
+      form.workNumber,
+      form.workType,
     ],
   );
+
+  useEffect(() => {
+    const handleResize = () => setViewportWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     Object.entries(recurringValues).forEach(([key, value]) => {
@@ -381,8 +440,8 @@ function App() {
   }, [recurringValues]);
 
   useEffect(() => {
-    if (subjectOptions.length > 0 && !subjectOptions.includes(form.subject)) {
-      updateForm("subject", subjectOptions[0]);
+    if (form.subject && !subjectOptions.includes(form.subject)) {
+      updateForm("subject", "");
     }
   }, [form.subject, subjectOptions]);
 
@@ -426,6 +485,7 @@ function App() {
     setIsExporting(true);
 
     try {
+      await new Promise((resolve) => requestAnimationFrame(resolve));
       const canvas = await html2canvas(coverRef.current, {
         backgroundColor: "#ffffff",
         scale: 2,
@@ -481,7 +541,21 @@ function App() {
           </Field>
 
           <Field icon={<CalendarDays aria-hidden="true" />} label="Fecha actual">
-            <input type="date" value={form.currentDate} onChange={(event) => updateForm("currentDate", event.target.value)} />
+            <div className="clearable-row">
+              <input
+                type="date"
+                value={form.currentDate}
+                onChange={(event) => updateForm("currentDate", event.target.value)}
+              />
+              <button
+                className="icon-action"
+                type="button"
+                onClick={() => updateForm("currentDate", "")}
+                aria-label="Dejar sin fecha actual"
+              >
+                <MinusCircle aria-hidden="true" />
+              </button>
+            </div>
           </Field>
 
           <Field icon={<FileText aria-hidden="true" />} label="Tipo de trabajo">
@@ -494,22 +568,45 @@ function App() {
             </select>
           </Field>
 
-          {form.workType !== "producto" && (
-            <Field icon={<FileText aria-hidden="true" />} label="Número">
+          {form.workType === "otro" && (
+            <Field icon={<FileText aria-hidden="true" />} label="Nombre del trabajo">
               <input
-                min="1"
-                type="number"
-                value={form.workNumber}
-                onChange={(event) => updateForm("workNumber", event.target.value)}
+                type="text"
+                value={form.customWorkType}
+                placeholder="Ej. Ensayo, exposición, proyecto..."
+                onChange={(event) => updateForm("customWorkType", event.target.value)}
               />
+            </Field>
+          )}
+
+          {form.workType !== "producto" && form.workType !== "otro" && (
+            <Field icon={<FileText aria-hidden="true" />} label="Número">
+              <div className="clearable-row">
+                <input
+                  min="1"
+                  type="number"
+                  value={form.workNumber}
+                  placeholder="Sin número"
+                  onChange={(event) => updateForm("workNumber", event.target.value)}
+                />
+                <button
+                  className="icon-action"
+                  type="button"
+                  onClick={() => updateForm("workNumber", "")}
+                  aria-label="Dejar sin número"
+                >
+                  <MinusCircle aria-hidden="true" />
+                </button>
+              </div>
             </Field>
           )}
 
           <Field icon={<GraduationCap aria-hidden="true" />} label="Materia">
             <select value={form.subject} onChange={(event) => updateForm("subject", event.target.value)}>
-              {subjectOptions.map((subject) => (
-                <option key={subject} value={subject}>
-                  {subject}
+              <option value="">Ninguna</option>
+              {subjectOptions.map((subjectId) => (
+                <option key={subjectId} value={subjectId}>
+                  {subjectsData.subjects[subjectId]?.name ?? subjectId}
                 </option>
               ))}
             </select>
@@ -518,6 +615,7 @@ function App() {
           <div className="two-columns">
             <Field icon={<GraduationCap aria-hidden="true" />} label="Semestre">
               <select value={form.semester} onChange={(event) => updateForm("semester", event.target.value)}>
+                <option value="">Ninguno</option>
                 {["1", "2", "3", "4", "5", "6"].map((semester) => (
                   <option key={semester} value={semester}>
                     {semester}°
@@ -527,6 +625,7 @@ function App() {
             </Field>
             <Field icon={<GraduationCap aria-hidden="true" />} label="Grupo">
               <select value={form.group} onChange={(event) => updateForm("group", event.target.value as Group)}>
+                <option value="">Ninguno</option>
                 {["A", "B", "C"].map((group) => (
                   <option key={group} value={group}>
                     {group}
@@ -537,7 +636,21 @@ function App() {
           </div>
 
           <Field icon={<CalendarDays aria-hidden="true" />} label="Fecha de entrega">
-            <input type="date" value={form.deliveryDate} onChange={(event) => updateForm("deliveryDate", event.target.value)} />
+            <div className="clearable-row">
+              <input
+                type="date"
+                value={form.deliveryDate}
+                onChange={(event) => updateForm("deliveryDate", event.target.value)}
+              />
+              <button
+                className="icon-action"
+                type="button"
+                onClick={() => updateForm("deliveryDate", "")}
+                aria-label="Dejar sin fecha de entrega"
+              >
+                <MinusCircle aria-hidden="true" />
+              </button>
+            </div>
           </Field>
 
           <section className="participants-editor" aria-label="Participantes">
@@ -573,13 +686,11 @@ function App() {
           </section>
 
           <Field icon={<UserRound aria-hidden="true" />} label="Maestro">
-            <select value={form.teacher} onChange={(event) => updateForm("teacher", event.target.value)}>
-              {teachers.map((teacher) => (
-                <option key={teacher} value={teacher}>
-                  {teacher}
-                </option>
-              ))}
-            </select>
+            <input
+              readOnly
+              type="text"
+              value={selectedSubject?.teacher ?? "Selecciona una materia"}
+            />
           </Field>
         </div>
 
@@ -600,8 +711,20 @@ function App() {
       </aside>
 
       <section className="preview-zone" aria-label="Vista previa">
-        <div className={`page-frame page-${form.orientation}`} ref={coverRef}>
-          <CoverPage form={form} />
+        <div
+          className="page-preview"
+          style={{
+            height: pageSize.height * previewScale,
+            width: pageSize.width * previewScale,
+          }}
+        >
+          <div
+            className={`page-frame page-${form.orientation}`}
+            ref={coverRef}
+            style={{ transform: `scale(${previewScale})` }}
+          >
+            <CoverPage form={form} />
+          </div>
         </div>
       </section>
     </main>

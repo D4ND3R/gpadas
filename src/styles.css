@@ -114,6 +114,18 @@ select {
   width: 100%;
 }
 
+input[readonly] {
+  color: #4d5a6b;
+  cursor: default;
+}
+
+.clearable-row {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) 44px;
+}
+
 .participants-editor {
   display: grid;
   gap: 10px;
@@ -202,7 +214,12 @@ button:disabled {
   background: #ffffff;
   box-shadow: 0 18px 60px rgba(23, 33, 47, 0.18);
   height: 1123px;
+  transform-origin: top left;
   width: 794px;
+}
+
+.page-preview {
+  position: relative;
 }
 
 .page-horizontal {
@@ -689,7 +706,7 @@ button:disabled {
   }
 
   .preview-zone {
-    justify-items: start;
+    justify-items: center;
   }
 }
 
@@ -711,7 +728,23 @@ button:disabled {
   }
 
   .preview-zone {
-    padding: 18px;
+    padding: 18px 10px 24px;
+  }
+
+  input,
+  select {
+    font-size: 16px;
+    min-width: 0;
+  }
+
+  .clearable-row,
+  .participant-row {
+    grid-template-columns: minmax(0, 1fr) 42px;
+  }
+
+  .icon-action {
+    min-height: 42px;
+    width: 42px;
   }
 }
 
