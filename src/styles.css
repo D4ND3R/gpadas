@@ -958,33 +958,69 @@ button:disabled {
   size: A4 portrait;
 }
 
+@page gpadas-portrait {
+  margin: 0;
+  size: A4 portrait;
+}
+
+@page gpadas-landscape {
+  margin: 0;
+  size: A4 landscape;
+}
+
 @media print {
+  html,
   body {
     background: #ffffff;
+    height: auto;
+    margin: 0;
+    min-height: 0;
+    min-width: 0;
+    overflow: visible;
   }
 
-  body * {
-    visibility: hidden;
+  .control-panel {
+    display: none;
   }
 
-  .page-frame,
-  .page-frame *,
-  .cover-page,
-  .cover-page * {
-    visibility: visible;
+  .app-shell,
+  .preview-zone,
+  .page-preview {
+    background: #ffffff;
+    display: block;
+    height: auto !important;
+    min-height: 0;
+    overflow: visible;
+    padding: 0;
+    width: auto !important;
   }
 
   .page-frame {
     box-shadow: none;
+    break-after: avoid;
+    break-before: avoid;
+    break-inside: avoid;
     height: 1123px;
-    left: 0;
-    position: fixed;
-    top: 0;
+    margin: 0;
+    page: gpadas-portrait;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    position: static;
+    transform: none !important;
     width: 794px;
   }
 
-  .page-horizontal {
+  .page-frame.page-horizontal {
     height: 794px;
+    page: gpadas-landscape;
     width: 1123px;
+  }
+
+  .cover-page {
+    break-after: avoid;
+    break-inside: avoid;
+    page-break-after: avoid;
+    page-break-inside: avoid;
   }
 }
