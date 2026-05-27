@@ -1,13 +1,248 @@
-[
-  "Pensamiento filosófico",
-  "Pensamiento deductivo",
-  "México independiente",
-  "Fundamentos de biología",
-  "Principios de química",
-  "Lenguas",
-  "Habilidades socioemocionales",
-  "Redacción de textos",
-  "Diagnóstico de proyectos comunitarios",
-  "Creatividad en movimiento",
-  "Diseño multimedia"
-]
+{
+  "1": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  },
+  "2": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  },
+  "3": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  },
+  "4": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  },
+  "5": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  },
+  "6": {
+    "A": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "B": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ],
+    "C": [
+      "Pensamiento filosófico",
+      "Pensamiento deductivo",
+      "México independiente",
+      "Fundamentos de biología",
+      "Principios de química",
+      "Lenguas",
+      "Habilidades socioemocionales",
+      "Redacción de textos",
+      "Diagnóstico de proyectos comunitarios",
+      "Creatividad en movimiento",
+      "Diseño multimedia"
+    ]
+  }
+}

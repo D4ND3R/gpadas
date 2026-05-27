@@ -7,9 +7,11 @@ import {
   Download,
   FileText,
   GraduationCap,
+  Plus,
   Printer,
   RotateCcw,
   School,
+  Trash2,
   UserRound,
 } from "lucide-react";
 import subjects from "./data/subjects.json";
@@ -17,11 +19,14 @@ import teachers from "./data/teachers.json";
 import "./styles.css";
 
 type CoverStyle = "minimalista" | "detallado" | "moderno";
+type CoverOrientation = "vertical" | "horizontal";
 type WorkType = "ada" | "laboratorio" | "producto";
 type Group = "A" | "B" | "C";
+type SubjectsBySemester = Record<string, Record<Group, string[]>>;
 
 interface FormState {
   style: CoverStyle;
+  orientation: CoverOrientation;
   currentDate: string;
   workType: WorkType;
   workNumber: string;
@@ -29,7 +34,7 @@ interface FormState {
   semester: string;
   group: Group;
   deliveryDate: string;
-  student: string;
+  participants: string[];
   teacher: string;
 }
 
@@ -59,6 +64,15 @@ const workOptions: Array<{ value: WorkType; label: string }> = [
   { value: "producto", label: "Producto final" },
 ];
 
+const orientationOptions: Array<{ value: CoverOrientation; label: string }> = [
+  { value: "vertical", label: "Vertical" },
+  { value: "horizontal", label: "Horizontal" },
+];
+
+const subjectsBySemester = subjects as SubjectsBySemester;
+const getSubjectsFor = (semester: string, group: Group) =>
+  subjectsBySemester[semester]?.[group] ?? [];
+
 const todayIso = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -81,11 +95,18 @@ const setCookie = (key: string, value: string) => {
 };
 
 const clearAppCookies = () => {
-  ["style", "subject", "semester", "group", "student", "teacher"].forEach(
-    (key) => {
-      document.cookie = `${COOKIE_PREFIX}${key}=; max-age=0; path=/; SameSite=Lax`;
-    },
-  );
+  [
+    "style",
+    "orientation",
+    "subject",
+    "semester",
+    "group",
+    "student",
+    "participants",
+    "teacher",
+  ].forEach((key) => {
+    document.cookie = `${COOKIE_PREFIX}${key}=; max-age=0; path=/; SameSite=Lax`;
+  });
 };
 
 const cookieValue = (key: string, fallback: string) => {
@@ -93,16 +114,34 @@ const cookieValue = (key: string, fallback: string) => {
   return value ? decodeURIComponent(value) : fallback;
 };
 
+const cookieArrayValue = (key: string, fallback: string[]) => {
+  const rawValue = getCookie(key);
+  if (!rawValue) {
+    const legacyStudent = getCookie("student");
+    return legacyStudent ? [decodeURIComponent(legacyStudent)] : fallback;
+  }
+
+  try {
+    const parsed = JSON.parse(decodeURIComponent(rawValue));
+    return Array.isArray(parsed)
+      ? parsed.filter((item): item is string => typeof item === "string")
+      : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 const buildInitialState = (): FormState => ({
   style: cookieValue("style", "minimalista") as CoverStyle,
+  orientation: cookieValue("orientation", "vertical") as CoverOrientation,
   currentDate: todayIso(),
   workType: "ada",
   workNumber: "1",
-  subject: cookieValue("subject", subjects[0]),
+  subject: cookieValue("subject", getSubjectsFor("2", "B")[0] ?? ""),
   semester: cookieValue("semester", "2"),
   group: cookieValue("group", "B") as Group,
   deliveryDate: todayIso(),
-  student: cookieValue("student", ""),
+  participants: cookieArrayValue("participants", [""]),
   teacher: cookieValue("teacher", teachers[0]),
 });
 
@@ -160,12 +199,36 @@ function Field({
   );
 }
 
+function ParticipantsList({
+  participants,
+  className = "",
+}: {
+  participants: string[];
+  className?: string;
+}) {
+  const names = participants.map((name) => name.trim()).filter(Boolean);
+  const visibleNames = names.length > 0 ? names : ["Nombre del alumno"];
+
+  return (
+    <section className={`student-line ${className}`}>
+      <span>{visibleNames.length > 1 ? "Alumnos:" : "Alumno:"}</span>
+      <div className="participants-list">
+        {visibleNames.map((name, index) => (
+          <strong key={`${name}-${index}`}>{name}</strong>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function CoverPage({ form }: { form: FormState }) {
-  const coverClass = `cover-page cover-${form.style}`;
+  const coverClass = `cover-page cover-${form.style} cover-${form.orientation}`;
   const workTitle = buildWorkTitle(form);
   const semesterLine = `${semesterNames[form.semester]} GRUPO ${form.group}`;
   const currentDate = `${LOCATION}, ${formatLongDate(form.currentDate)}`;
   const deliveryDate = formatShortDate(form.deliveryDate);
+  const participantCount = form.participants.filter((name) => name.trim()).length;
+  const participantLabel = participantCount > 1 ? "Alumnos" : "Alumno";
 
   if (form.style === "detallado") {
     return (
@@ -205,10 +268,7 @@ function CoverPage({ form }: { form: FormState }) {
             <dd>{form.teacher}</dd>
           </div>
         </dl>
-        <section className="student-line detailed-student">
-          <span>Alumno</span>
-          <strong>{form.student || "Nombre del alumno"}</strong>
-        </section>
+        <ParticipantsList participants={form.participants} className="detailed-student" />
         <img className="school-stamp detailed-stamp" src="/assets/school-stamp.png" alt="" />
       </article>
     );
@@ -237,8 +297,15 @@ function CoverPage({ form }: { form: FormState }) {
             <strong>{form.teacher}</strong>
           </div>
           <div>
-            <span>Alumno</span>
-            <strong>{form.student || "Nombre del alumno"}</strong>
+            <span>{participantLabel}</span>
+            <div className="participants-list modern-participants">
+              {(form.participants.map((name) => name.trim()).filter(Boolean).length
+                ? form.participants.map((name) => name.trim()).filter(Boolean)
+                : ["Nombre del alumno"]
+              ).map((name, index) => (
+                <strong key={`${name}-${index}`}>{name}</strong>
+              ))}
+            </div>
           </div>
         </section>
         <footer className="modern-footer">
@@ -267,10 +334,7 @@ function CoverPage({ form }: { form: FormState }) {
       </section>
       <p className="delivery">Fecha de entrega: {deliveryDate}</p>
       <p className="teacher">Maestro: {form.teacher}</p>
-      <section className="student-line">
-        <span>Alumno:</span>
-        <strong>- {form.student || "Nombre del alumno"}</strong>
-      </section>
+      <ParticipantsList participants={form.participants} />
       <img className="school-stamp classic-stamp" src="/assets/school-stamp.png" alt="" />
     </article>
   );
@@ -280,17 +344,34 @@ function App() {
   const [form, setForm] = useState<FormState>(() => buildInitialState());
   const [isExporting, setIsExporting] = useState(false);
   const coverRef = useRef<HTMLDivElement>(null);
+  const subjectOptions = useMemo(
+    () => getSubjectsFor(form.semester, form.group),
+    [form.group, form.semester],
+  );
+  const pageSize =
+    form.orientation === "horizontal"
+      ? { width: 1123, height: 794, pdfOrientation: "landscape" as const }
+      : { width: 794, height: 1123, pdfOrientation: "portrait" as const };
 
   const recurringValues = useMemo(
     () => ({
       style: form.style,
+      orientation: form.orientation,
       subject: form.subject,
       semester: form.semester,
       group: form.group,
-      student: form.student,
+      participants: JSON.stringify(form.participants),
       teacher: form.teacher,
     }),
-    [form.group, form.semester, form.student, form.style, form.subject, form.teacher],
+    [
+      form.group,
+      form.orientation,
+      form.participants,
+      form.semester,
+      form.style,
+      form.subject,
+      form.teacher,
+    ],
   );
 
   useEffect(() => {
@@ -299,8 +380,40 @@ function App() {
     });
   }, [recurringValues]);
 
+  useEffect(() => {
+    if (subjectOptions.length > 0 && !subjectOptions.includes(form.subject)) {
+      updateForm("subject", subjectOptions[0]);
+    }
+  }, [form.subject, subjectOptions]);
+
   const updateForm = <Key extends keyof FormState>(key: Key, value: FormState[Key]) => {
     setForm((current) => ({ ...current, [key]: value }));
+  };
+
+  const updateParticipant = (index: number, value: string) => {
+    setForm((current) => ({
+      ...current,
+      participants: current.participants.map((participant, participantIndex) =>
+        participantIndex === index ? value : participant,
+      ),
+    }));
+  };
+
+  const addParticipant = () => {
+    setForm((current) => ({
+      ...current,
+      participants: [...current.participants, ""],
+    }));
+  };
+
+  const removeParticipant = (index: number) => {
+    setForm((current) => ({
+      ...current,
+      participants:
+        current.participants.length === 1
+          ? [""]
+          : current.participants.filter((_, participantIndex) => participantIndex !== index),
+    }));
   };
 
   const resetSavedData = () => {
@@ -320,12 +433,13 @@ function App() {
       });
       const image = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
-        orientation: "portrait",
+        orientation: pageSize.pdfOrientation,
         unit: "px",
-        format: [794, 1123],
+        format: [pageSize.width, pageSize.height],
       });
-      pdf.addImage(image, "PNG", 0, 0, 794, 1123);
-      pdf.save(`${fileSafe(buildWorkTitle(form)) || "portada"}-${fileSafe(form.student) || "alumno"}.pdf`);
+      pdf.addImage(image, "PNG", 0, 0, pageSize.width, pageSize.height);
+      const mainParticipant = form.participants.find((name) => name.trim()) ?? "alumnos";
+      pdf.save(`${fileSafe(buildWorkTitle(form)) || "portada"}-${fileSafe(mainParticipant) || "alumnos"}.pdf`);
     } finally {
       setIsExporting(false);
     }
@@ -346,6 +460,19 @@ function App() {
           <Field icon={<FileText aria-hidden="true" />} label="Estilo">
             <select value={form.style} onChange={(event) => updateForm("style", event.target.value as CoverStyle)}>
               {styleOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+
+          <Field icon={<FileText aria-hidden="true" />} label="Orientación">
+            <select
+              value={form.orientation}
+              onChange={(event) => updateForm("orientation", event.target.value as CoverOrientation)}
+            >
+              {orientationOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -380,7 +507,7 @@ function App() {
 
           <Field icon={<GraduationCap aria-hidden="true" />} label="Materia">
             <select value={form.subject} onChange={(event) => updateForm("subject", event.target.value)}>
-              {subjects.map((subject) => (
+              {subjectOptions.map((subject) => (
                 <option key={subject} value={subject}>
                   {subject}
                 </option>
@@ -413,14 +540,37 @@ function App() {
             <input type="date" value={form.deliveryDate} onChange={(event) => updateForm("deliveryDate", event.target.value)} />
           </Field>
 
-          <Field icon={<UserRound aria-hidden="true" />} label="Alumno">
-            <input
-              type="text"
-              value={form.student}
-              placeholder="Nombre completo"
-              onChange={(event) => updateForm("student", event.target.value)}
-            />
-          </Field>
+          <section className="participants-editor" aria-label="Participantes">
+            <div className="participants-heading">
+              <span className="field-label">
+                <UserRound aria-hidden="true" />
+                {form.participants.length > 1 ? "Alumnos" : "Alumno"}
+              </span>
+              <button className="icon-action" type="button" onClick={addParticipant} aria-label="Agregar participante">
+                <Plus aria-hidden="true" />
+              </button>
+            </div>
+            <div className="participants-inputs">
+              {form.participants.map((participant, index) => (
+                <div className="participant-row" key={index}>
+                  <input
+                    type="text"
+                    value={participant}
+                    placeholder={`Nombre completo ${index + 1}`}
+                    onChange={(event) => updateParticipant(index, event.target.value)}
+                  />
+                  <button
+                    className="icon-action"
+                    type="button"
+                    onClick={() => removeParticipant(index)}
+                    aria-label={`Quitar participante ${index + 1}`}
+                  >
+                    <Trash2 aria-hidden="true" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
 
           <Field icon={<UserRound aria-hidden="true" />} label="Maestro">
             <select value={form.teacher} onChange={(event) => updateForm("teacher", event.target.value)}>
@@ -450,7 +600,7 @@ function App() {
       </aside>
 
       <section className="preview-zone" aria-label="Vista previa">
-        <div className="page-frame" ref={coverRef}>
+        <div className={`page-frame page-${form.orientation}`} ref={coverRef}>
           <CoverPage form={form} />
         </div>
       </section>

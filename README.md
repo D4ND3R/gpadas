@@ -11,7 +11,15 @@ npm run dev
 
 ## Catálogos editables
 
-Las materias se modifican en `src/data/subjects.json`.
+Las materias se modifican en `src/data/subjects.json`. El archivo está separado por semestre y grupo:
+
+```json
+{
+  "2": {
+    "B": ["Diseño multimedia"]
+  }
+}
+```
 
 Los maestros se modifican en `src/data/teachers.json`.
 
